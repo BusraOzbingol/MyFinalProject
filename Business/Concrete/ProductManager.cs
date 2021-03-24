@@ -60,6 +60,10 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Product>>(_productDal.GetAll(), Messages.ProductListed);
 
         }
+        public IDataResult<List<Product>> GetAllByCategoryId(int id)
+        {
+            return new SuccessDataResult<List<Product>>(_productDal.GetAll(p => p.CategoryId == id));
+        }
 
         [CacheAspect]
         public IDataResult<Product> GetById(int productId)
